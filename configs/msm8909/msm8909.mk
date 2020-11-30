@@ -172,6 +172,9 @@ vendor.audio.rec.playback.conc.disabled=true
 PRODUCT_PROPERTY_OVERRIDES += \
 vendor.audio.sys.init=false
 
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.hw.aac.encoder=false
+
 #Enable DS2 feature for Dolby
 PRODUCT_PROPERTY_OVERRIDES += \
 vendor.audio.dolby.ds2.enabled=true
