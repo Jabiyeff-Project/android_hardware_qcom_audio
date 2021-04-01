@@ -31,6 +31,8 @@
 #include "audio_extn.h"
 #include <platform.h>
 
+#define CVD_VER_STR    "2.3"
+
 #ifdef INSTANCE_ID_ENABLED
 int check_and_set_instance_id_support(struct mixer* mixer, bool acdb_support)
 {
@@ -170,18 +172,23 @@ int acdb_init_v2(struct mixer *mixer)
         ctl = mixer_get_ctl_by_name(mixer, CVD_VERSION_MIXER_CTL);
         if (!ctl) {
             ALOGE("%s: Could not get ctl for mixer cmd - %s",  __func__, CVD_VERSION_MIXER_CTL);
-            goto cleanup;
+            strlcpy(cvd_version, CVD_VER_STR, MAX_CVD_VERSION_STRING_SIZE);
+            ALOGE(" @@@@@@@ Default cvd_version set to %s @@@@@@ ", cvd_version);
+            ctl = NULL;
+            //goto cleanup;
         }
-        mixer_ctl_update(ctl);
+        if (ctl) {
+            mixer_ctl_update(ctl);
 
-        count = mixer_ctl_get_num_values(ctl);
-        if (count > MAX_CVD_VERSION_STRING_SIZE)
-            count = MAX_CVD_VERSION_STRING_SIZE;
+            count = mixer_ctl_get_num_values(ctl);
+            if (count > MAX_CVD_VERSION_STRING_SIZE)
+                count = MAX_CVD_VERSION_STRING_SIZE;
 
-        result = mixer_ctl_get_array(ctl, cvd_version, count);
-        if (result != 0) {
-            ALOGE("%s: ERROR! mixer_ctl_get_array() failed to get CVD Version", __func__);
-            goto cleanup;
+            result = mixer_ctl_get_array(ctl, cvd_version, count);
+            if (result != 0) {
+                ALOGE("%s: ERROR! mixer_ctl_get_array() failed to get CVD Version", __func__);
+                goto cleanup;
+            }
         }
     }
 
