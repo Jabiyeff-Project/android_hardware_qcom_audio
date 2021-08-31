@@ -206,7 +206,7 @@ LOCAL_C_INCLUDES := \
         $(call include-path-for, audio-effects) \
         $(call include-path-for, audio-route) \
         external/tinycompress/include \
-        system/media/audio_utils/include
+        system/media/audio_utils/include \
         hardware/qcom-caf/msm8937/audio/hal \
         hardware/qcom-caf/msm8937/audio/hal/audio_extn
 
