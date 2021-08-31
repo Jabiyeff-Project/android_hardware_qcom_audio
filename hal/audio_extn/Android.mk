@@ -1,7 +1,6 @@
 ifneq ($(strip $(TARGET_PROVIDES_AUDIO_EXTNS)),true)
 
-PRIMARY_HAL_PATH := hardware/qcom-caf/msm8937/hal
-AUDIO_KERNEL_INC := vendor/qcom/opensource/audio-kernel/include
+PRIMARY_HAL_PATH := hardware/qcom-caf/msm8937/audio/hal
 
 #--------------------------------------------
 #          Build SND_MONITOR LIB
