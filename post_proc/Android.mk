@@ -85,7 +85,7 @@ LOCAL_C_INCLUDES := \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/audio \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include \
-        $(call include-path-for, audio-effects)
+        $(call include-path-for, audio-effects) \
         hardware/qcom-caf/msm8937/audio/hal \
         hardware/qcom-caf/msm8937/audio/hal/audio_extn/
 
